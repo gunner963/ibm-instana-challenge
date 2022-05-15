@@ -5,6 +5,7 @@ import { tweets as tweets$ } from "./dataSource"
 const DELETE_OLD_TWEET_FREQUENCY = 30000
 
 export interface Tweet {
+  id: string
   account: string
   timestamp: number
   content: string
@@ -23,11 +24,17 @@ export const useTweets = () => {
           setTweets((tweets) => {
             if (Array.isArray(tweets)) {
               const recentlyFilteredTweets = tweets.filter(
-                (tweet) => timestamp - tweet.timestamp < 30000
+                (tweet) =>
+                  timestamp - tweet.timestamp < DELETE_OLD_TWEET_FREQUENCY
               )
-              return [{ ...value, liked: false }, ...recentlyFilteredTweets]
+              return [
+                { ...value, liked: false, id: value.account + value.timestamp },
+                ...recentlyFilteredTweets
+              ]
             }
-            return [{ ...value, liked: false }]
+            return [
+              { ...value, liked: false, id: value.account + value.timestamp }
+            ]
           })
         })
     } else if (!receiveTweets) {

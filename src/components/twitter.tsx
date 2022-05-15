@@ -1,7 +1,19 @@
-import React from "react"
+import { Tweet } from "../services/tweet.service"
+import SingleTweet from "./SingleTweet"
 
-const Twitter = () => {
-  return <div></div>
+type Props = {
+  tweets: Tweet[]
+  onLike: Function
+}
+
+const Twitter = ({ tweets, onLike }: Props) => {
+  return (
+    <>
+      {tweets.map((tweet) => (
+        <SingleTweet tweet={tweet} key={tweet.id} onLike={onLike} />
+      ))}
+    </>
+  )
 }
 
 export default Twitter
