@@ -51,6 +51,7 @@ function App() {
         onLikedTweetsToggle={handleLikedTweetsToggle}
         onClearTweets={handleClearTweets}
         toggleLikedTweets={toggleLikedTweets}
+        likedTweetsCount={likedTweets?.length || 0}
       />
       <br />
       <Container>
