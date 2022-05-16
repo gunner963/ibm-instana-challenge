@@ -5,8 +5,8 @@ type Props = {
   alertText: string
 }
 
-const StaticAlert = ({ variant, alertText }: Props) => {
-  return <Alert variant={variant || "info"}>{alertText}</Alert>
+const StaticAlert = ({ variant = "info", alertText }: Props) => {
+  return <Alert variant={variant}>{alertText}</Alert>
 }
 
 export default StaticAlert
