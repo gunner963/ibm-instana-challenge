@@ -31,7 +31,7 @@ const SingleTweet = ({ tweet, onLike }: Props) => {
                 tweet.liked ? "btn-danger" : "btn-outline-danger"
               }`}
             >
-              <HeartIcon liked={tweet.liked} />
+              <HeartIcon fill={tweet.liked ? "white" : "black"} />
             </button>
           </Col>
         </Row>

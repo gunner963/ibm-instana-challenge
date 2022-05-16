@@ -1,14 +1,14 @@
 type Props = {
-  liked: boolean
+  fill?: string
 }
 
-const HeartIcon = ({ liked }: Props) => {
+const HeartIcon = ({ fill }: Props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
-      fill={`${liked ? "white" : "black"}`}
+      fill={`${fill || "black"}`}
       className="bi bi-suit-heart-fill"
       viewBox="0 0 16 16"
     >
