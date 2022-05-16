@@ -1,4 +1,4 @@
-import { Tweet } from "../services/tweet.service"
+import { Tweet } from "../interface/common"
 import SingleTweet from "./SingleTweet"
 
 type Props = {

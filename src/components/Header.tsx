@@ -1,20 +1,23 @@
 import { Form } from "react-bootstrap"
 
 type Props = {
-  onLikedTweetsToggle: React.ChangeEventHandler<HTMLInputElement>
+  onShowLikedTweets: React.ChangeEventHandler<HTMLInputElement>
   toggleLikedTweets: boolean
   onClearTweets: React.MouseEventHandler<HTMLElement>
   likedTweetsCount: number
 }
 
 const Header = ({
-  onLikedTweetsToggle,
+  onShowLikedTweets,
   toggleLikedTweets,
   onClearTweets,
   likedTweetsCount
 }: Props) => {
   return (
     <header className="p-2 bg-dark text-white">
+      <div className="d-flex justify-content-center">
+        <p className="h3">Twitter</p>
+      </div>
       <div className="d-flex p-1">
         <div className="p-2 ">
           <Form>
@@ -23,7 +26,7 @@ const Header = ({
               type="switch"
               id="custom-switch"
               label="Display Liked Tweets Only"
-              onChange={onLikedTweetsToggle}
+              onChange={onShowLikedTweets}
               checked={toggleLikedTweets}
               role="button"
             />

@@ -1,19 +1,20 @@
 import React, { useCallback, useEffect, useState } from "react"
 import "./App.css"
-import { Tweet, useTweets } from "./services/tweet.service"
+import { useTweets } from "./services/tweet.service"
 import { Container } from "react-bootstrap"
 import Header from "./components/Header"
 import Twitter from "./components/Twitter"
 import StaticAlert from "./components/StaticAlert"
+import { Tweet } from "./interface/common"
 
 function App() {
   const [tweets, setTweets, setReceiveTweets] = useTweets()
   const [likedTweets, setLikedTweets] = useState<null | Tweet[]>(null)
-  const [toggleLikedTweets, setToggleLikedTweets] = useState(false)
+  const [showLikedTweets, setShowLikedTweets] = useState(false)
 
-  const handleLikedTweetsToggle = useCallback(
-    () => setToggleLikedTweets(!toggleLikedTweets),
-    [toggleLikedTweets]
+  const handleShowLikedTweets = useCallback(
+    () => setShowLikedTweets(!showLikedTweets),
+    [showLikedTweets]
   )
 
   const handleLike = useCallback(
@@ -48,18 +49,21 @@ function App() {
   return (
     <div>
       <Header
-        onLikedTweetsToggle={handleLikedTweetsToggle}
+        onShowLikedTweets={handleShowLikedTweets}
         onClearTweets={handleClearTweets}
-        toggleLikedTweets={toggleLikedTweets}
+        toggleLikedTweets={showLikedTweets}
         likedTweetsCount={likedTweets?.length || 0}
       />
       <br />
       <Container>
-        {tweets && !toggleLikedTweets ? (
-          <Twitter tweets={tweets} onLike={handleLike} />
-        ) : likedTweets && toggleLikedTweets ? (
+        {showLikedTweets && likedTweets ? (
           <Twitter tweets={likedTweets} onLike={handleLike} />
-        ) : (
+        ) : null}
+        {!showLikedTweets && tweets ? (
+          <Twitter tweets={tweets} onLike={handleLike} />
+        ) : null}
+
+        {!tweets && !likedTweets && (
           <StaticAlert alertText="No Tweets To Display !" />
         )}
       </Container>

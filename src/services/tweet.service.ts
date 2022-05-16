@@ -1,16 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 import { Subscription, timestamp } from "rxjs"
+import { Tweet } from "../interface/common"
 import { tweets as tweets$ } from "./dataSource"
 
 const DELETE_OLD_TWEET_FREQUENCY = 30000
-
-export interface Tweet {
-  id: string
-  account: string
-  timestamp: number
-  content: string
-  liked: boolean
-}
 
 export const useTweets = () => {
   const twitterSubscription = useRef<Subscription | null>(null)

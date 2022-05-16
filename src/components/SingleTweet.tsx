@@ -1,6 +1,6 @@
 import { useCallback } from "react"
 import { Card, Col, Row } from "react-bootstrap"
-import { Tweet } from "../services/tweet.service"
+import { Tweet } from "../interface/common"
 import HeartIcon from "./icons/Heart"
 
 type Props = {
