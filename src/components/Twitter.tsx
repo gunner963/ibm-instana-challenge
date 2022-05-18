@@ -8,11 +8,11 @@ type Props = {
 
 const Twitter = ({ tweets, onLike }: Props) => {
   return (
-    <>
+    <div data-testid="twitter">
       {tweets.map((tweet) => (
         <SingleTweet tweet={tweet} key={tweet.id} onLike={onLike} />
       ))}
-    </>
+    </div>
   )
 }
 

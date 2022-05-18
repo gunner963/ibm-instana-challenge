@@ -14,7 +14,7 @@ const Header = ({
   likedTweetsCount
 }: Props) => {
   return (
-    <header className="p-2 bg-dark text-white">
+    <header className="p-2 bg-dark text-white" data-testid="header">
       <div className="d-flex justify-content-center">
         <p className="h3">Twitter</p>
       </div>
